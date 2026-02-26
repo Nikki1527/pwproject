@@ -1,0 +1,17 @@
+{
+  "validUser": {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "displayName": "Standard User"
+  },
+  "adminUser": {
+    "username": "admin_user",
+    "password": "admin_pass",
+    "displayName": "Admin User"
+  },
+  "lockedUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "displayName": "Locked User"
+  }
+}
