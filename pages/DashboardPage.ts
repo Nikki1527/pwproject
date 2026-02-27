@@ -6,8 +6,8 @@ export class DashboardPage extends BasePage {
 
     constructor(page: Page) {
         super(page); // Call the constructor of BasePage to initialize the page property
-        this.dashboardHeader = this.page.getByRole('heading', { name: 'Dashboard' }).describe("Dashboard page header");
-        this.lnkPIM = this.page.getByRole('link', { name: 'PIM' }).describe("PIM link");
+        this.dashboardHeader = this.page.getByRole('heading', { name: 'Dashboard' });
+        this.lnkPIM = this.page.getByRole('link', { name: 'PIM' });
     }
 
     async verifyDashboardPageExists() {
@@ -18,7 +18,7 @@ export class DashboardPage extends BasePage {
 
     async navigateToEmployeeList() {
         await this.lnkPIM.click();
-        console.log(`Clicked on ${this.lnkPIM.description()}`);
+        console.log(`Clicked on PIM link`);
     }
 
 }
