@@ -1,19 +1,21 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { DashboardPage } from './DashboardPage';
+import { BasePage } from './BasePage';
 
 /**
  * LoginPage - encapsulates all interactions on the Login page.
  */
-export class LoginPage {
-    private page: Page;
+export class LoginPage extends BasePage {
+
+    // private page: Page;
     private readonly usernameInput: Locator;
     private readonly passwordInput: Locator;
     private readonly loginButton: Locator;
     private readonly errorMessage: Locator;
 
     constructor(page: Page) {
-        this.page = page;
-        // Locators 
+        super(page); // Call the constructor of BasePage to initialize the page property
+        // Locators for the login page elements
         this.usernameInput = this.page.getByRole('textbox', { name: 'Username' }).describe("Username input field");
         this.passwordInput = this.page.getByRole('textbox', { name: 'Password' }).describe("Password input field");
         this.loginButton = this.page.getByRole('button', { name: 'Login' }).describe("Login button");

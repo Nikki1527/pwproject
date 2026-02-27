@@ -1,11 +1,11 @@
 import { Page, Locator, expect } from '@playwright/test';
-export class DashboardPage {
-    private page: Page;
+import { BasePage } from './BasePage';
+export class DashboardPage extends BasePage {
     private readonly dashboardHeader: Locator;
     private readonly lnkPIM:Locator;
 
     constructor(page: Page) {
-        this.page = page;
+        super(page); // Call the constructor of BasePage to initialize the page property
         this.dashboardHeader = this.page.getByRole('heading', { name: 'Dashboard' }).describe("Dashboard page header");
         this.lnkPIM = this.page.getByRole('link', { name: 'PIM' }).describe("PIM link");
     }

@@ -3,22 +3,24 @@ import { test, expect } from '@playwright/test';
 // import { DashboardPage } from '../pages/DashboardPage';
 // import { EmployeeListPage } from '../pages/EmployeeListPage';
 // import { AddEmployeePage } from '../pages/AddEmployeePage';
-import { LoginPage, DashboardPage, EmployeeListPage, AddEmployeePage } from '../pages';
+import {BasePage, LoginPage, DashboardPage, EmployeeListPage, AddEmployeePage } from '../pages';
 
 test('Add Employee Tests', async ({ page }) => {
+    let basePage: BasePage;
     let loginPage: LoginPage;
     let dashboardPage: DashboardPage;
     let employeeListPage: EmployeeListPage;
     let addEmployeePage: AddEmployeePage;
 
     // Initialize page objects
+    basePage = new BasePage(page);
     loginPage = new LoginPage(page);
     dashboardPage = new DashboardPage(page);
     employeeListPage = new EmployeeListPage(page);
     addEmployeePage = new AddEmployeePage(page);
 
     // Navigate to login page and perform login
-    await page.goto('https://vibetestq-osondemand.orangehrm.com/auth/login');
+    await basePage.navigateTo('https://vibetestq-osondemand.orangehrm.com/auth/login');
     await loginPage.login('nagesh', 'Nagesh@123');
 
     // Verify that we are on the Dashboard page

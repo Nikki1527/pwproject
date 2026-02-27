@@ -1,0 +1,27 @@
+import { Page } from '@playwright/test';
+
+export class BasePage {
+
+    // Common properties and methods for all pages can be defined here
+
+    protected page: Page; // Protected so that it can be accessed by derived classes
+
+    constructor(page: Page) {
+        this.page = page;
+    }
+
+    async navigateTo(url: string): Promise<void> {
+        await this.page.goto(url);
+        console.log(`Navigated to URL: ${url}`);
+    }
+    async getPageTitle(): Promise<string> {
+        const title = await this.page.title();
+        console.log(`Current page title: ${title}`);
+        return title;
+    }
+
+    async waitForPageLoad(): Promise<void> {
+        await this.page.waitForLoadState('load');
+        console.log(`Page has fully loaded`);
+    }
+}
